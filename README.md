@@ -23,7 +23,7 @@ npm ci
 npm start
 ```
 
-Run `npm test` for the address and settings tests. Run `npm run test:desktop` in a graphical session, or `xvfb-run -a npm run test:desktop` on headless Linux with a working Chromium sandbox. `npm run package` builds a portable app for the current operating system in `dist/`.
+Run `npm test` for the address and settings tests. Run `npm run test:desktop` in a graphical session, or `xvfb-run -a npm run test:desktop` on headless Linux with a working Chromium sandbox. `npm run package` builds a portable app for the current operating system in `dist/`. On Linux x64, `node --test test/package-smoke.cjs` checks that the packaged app starts and opens a public HTTPS page.
 
 ## What works
 

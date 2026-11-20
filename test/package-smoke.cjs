@@ -67,7 +67,13 @@ test('portable Linux build starts and opens an HTTPS website', { timeout: 35_000
       return state.title === 'Example Domain';
     }, 12_000);
     const remote = await waitFor(async () => (await targets()).find(target => target.url === 'https://example.com/'));
-    await waitFor(() => evaluate(remote.webSocketDebuggerUrl, `document.title === 'Example Domain' && document.body?.innerText.includes('Example Domain')`));
+    const rendered = await evaluate(remote.webSocketDebuggerUrl, `({
+      href: location.href, title: document.title, content: document.body?.innerText.slice(0, 180),
+      heading: document.querySelector('h1')?.textContent, ready: document.readyState
+    })`);
+    if (rendered.href !== 'https://example.com/' || rendered.title !== 'Example Domain' || !rendered.content) {
+      throw new Error(`Unexpected HTTPS document: ${JSON.stringify(rendered)}`);
+    }
   } finally {
     if (app.pid && app.exitCode === null && app.signalCode === null) {
       const done = once(app, 'exit');
