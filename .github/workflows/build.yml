@@ -27,7 +27,7 @@ jobs:
       - run: npm test
       - name: Enable the Electron test sandbox
         run: |
-          npx electron --version
+          node node_modules/electron/install.js
           sudo chown root:root node_modules/electron/dist/chrome-sandbox
           sudo chmod 4755 node_modules/electron/dist/chrome-sandbox
       - run: xvfb-run -a npm run test:desktop
