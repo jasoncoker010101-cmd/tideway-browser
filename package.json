@@ -15,6 +15,6 @@
   "devDependencies": {
     "@electron/packager": "20.3.0",
     "electron": "45.4.1",
-    "playwright": "1.61.1"
+    "playwright": "1.65.1"
   }
 }
