@@ -1,0 +1,20 @@
+{
+  "name": "tideway-browser",
+  "productName": "Tideway",
+  "version": "0.1.0",
+  "description": "A desktop web browser built on Electron and Chromium.",
+  "main": "src/main.cjs",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test test/model.test.cjs",
+    "test:desktop": "node --test test/desktop.test.cjs",
+    "package": "node scripts/package.mjs"
+  },
+  "engines": {"node": ">=22.12.0"},
+  "devDependencies": {
+    "@electron/packager": "20.3.0",
+    "electron": "45.4.1",
+    "playwright": "1.61.1"
+  }
+}
